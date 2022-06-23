@@ -1,0 +1,65 @@
+.app{
+    display: flex;
+    flex: 1;
+    background-color: #003034;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    .image-uploader {
+      width: 30%;
+      display: flex;
+      justify-content: center;
+      background-color: #001B1E;
+      margin-top: 20px;
+      padding: 20px;
+      gap: 16px;
+    
+      .image-wrapper {
+          flex: 1;
+      }
+    
+      img {
+          height: 64px;
+          width: 100%;
+      }
+    
+      .choose-button {
+        position: relative;
+        overflow: hidden;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border: 0.5px dashed white;
+        border-radius: 5px;
+        font-family: 'Arial';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #CFE4E4;
+        flex: 1;
+        justify-content: center;
+      
+        .upload-icon {
+            margin: 0px 10px;
+        }
+      
+        label {
+            margin:0px 5px;
+            cursor: pointer;
+            text-decoration-line: underline;
+        }
+      
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+      }
+    }
+}

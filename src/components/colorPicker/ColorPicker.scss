@@ -1,0 +1,78 @@
+%color-input {
+    background-color: #001b1e;
+    border: 0.5px solid #ffffff;
+    border-radius: 1px;
+    color: #cfe4e4;
+    height: 24px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0px 5px;
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #001b1e;
+    margin-top: 20px;
+    padding: 15px;
+    gap: 16px;
+    width: 16%;
+
+    .react-colorful__saturation {
+        border-radius: 0px;
+    }
+
+    .react-colorful__last-control {
+        border-radius: 50px;
+        height: 18px;
+        margin-top: 15px;
+    }
+
+    .react-colorful__pointer {
+        width: 18px;
+        height: 18px;
+        background-color: unset;
+    }
+    
+    .hex-picker{
+        width: 240px;
+        height: 240px
+    }
+
+    .react-colorful{
+        width: 100%;
+        height: 245px;
+    }
+
+    .hex-code {
+        display: flex;
+        align-items: center;
+
+        .ant-select-selector,
+        .anticon-down {
+            color: white;
+        }
+
+        .ant-select-arrow{
+            font-size: 9px;
+            height: 9px;
+            top: 57%;
+        }
+
+        .ant-select-selection-item {
+            font-size: 14px;
+        }
+
+        .hex-input {
+            @extend %color-input;
+            width: 35%;
+        }
+
+        .rgb-input {
+            @extend %color-input;
+            width: 30% !important;
+            margin: 0px 3px;
+        }
+    }
+}

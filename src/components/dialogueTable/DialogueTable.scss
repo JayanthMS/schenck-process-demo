@@ -1,0 +1,132 @@
+%status-button {
+    border-radius: 27px;
+    height: 15px;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0px 5px;
+}
+
+.dialogue-screen {
+    background-color: #003034;
+    padding: 20px;
+
+    .dialogue-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 20px 0px;
+
+        .title-button {
+            display: flex;
+            gap: 10px;
+
+            .filter-button,
+            .dialogue-button {
+                background: #c4d400;
+                border-radius: 2px;
+                font-family: "Font Awesome 5 Pro";
+                font-style: normal;
+                font-weight: 900;
+                font-size: 14px;
+                line-height: 14px;
+                letter-spacing: 1.25px;
+                text-transform: uppercase;
+                color: #003034;
+            }
+        }
+    }
+
+    .nav-button {
+        display: flex;
+        gap: 16px;
+
+        .top-button {
+            background: #00484e;
+            border-radius: 2px;
+            height: 32px;
+            font-family: "Arial";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            text-decoration-line: underline;
+            color: #ffffff;
+            border: none;
+        }
+
+        .top-button:hover,
+        .top-button:active,
+        .top-button:focus {
+            background-color: unset;
+        }
+    }
+
+    label {
+        font-family: "Big Shoulders Display";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 84px;
+        line-height: 96px;
+        letter-spacing: -0.5px;
+        color: #c4d400;
+    }
+
+    table {
+        background: #003034;
+        box-shadow: 0px 0px 16px 8px rgba(0, 27, 30, 0.25);
+
+        thead > tr > th {
+            background: #00484e;
+            font-family: "Big Shoulders Display";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 21px;
+            line-height: 24px;
+            letter-spacing: 0.15px;
+            color: #82b4c1;
+            border-bottom: unset;
+        }
+
+        tbody > tr {
+            border-color: unset;
+
+            td {
+                background: #003034;
+                color: #f2f2f2;
+                font-family: "Arial";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                border-bottom: 0.5px solid rgba(207, 228, 228, 0.5) !important;
+            }
+        }
+
+        .ant-table-measure-row{
+            border-bottom: unset !important
+        }
+
+        .ant-table-tbody > tr.ant-table-row:hover > td,
+        .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+            background: #248d98;
+        }
+
+        .open-status {
+            @extend %status-button;
+            background: #6eceab;
+            color: #003034;
+        }
+
+        .close-status {
+            @extend %status-button;
+            background: #f60347;
+            color: #ffffff;
+        }
+    }
+}

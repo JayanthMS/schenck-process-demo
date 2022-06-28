@@ -15,6 +15,7 @@
 .dialogue-screen {
     background-color: #003034;
     padding: 20px;
+    width: 100%;
 
     .dialogue-title {
         display: flex;
@@ -25,6 +26,34 @@
         .title-button {
             display: flex;
             gap: 10px;
+            align-items: center;
+
+            .filter-list {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                float: left;
+
+                .checked-list {
+                    background: rgba(196, 212, 0, 0.25);
+                    border-radius: 38px;
+                    padding: 5px 10px;
+                    font-family: "Arial";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 16px;
+                    text-align: center;
+                    color: #c4d400;
+                    margin: 5px 5px;
+
+                    span {
+                        margin-left: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
 
             .filter-button,
             .dialogue-button {
@@ -108,8 +137,12 @@
             }
         }
 
-        .ant-table-measure-row{
-            border-bottom: unset !important
+        .ant-empty-description {
+            color: white;
+        }
+
+        .ant-table-measure-row {
+            border-bottom: unset !important;
         }
 
         .ant-table-tbody > tr.ant-table-row:hover > td,
@@ -117,6 +150,9 @@
             background: #248d98;
         }
 
+        .ant-table-tbody > tr.ant-table-placeholder:hover > td {
+            background: #248d98;
+        }
         .open-status {
             @extend %status-button;
             background: #6eceab;

@@ -1,5 +1,7 @@
-import React from 'react'
-import { Button, Table } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Button, Table, Dropdown } from 'antd'
+import { CloseCircleOutlined } from '@ant-design/icons'
+import FilterMenu from '../filterMenu/FilterMenu'
 import { FilterOutlined } from '@ant-design/icons'
 import './DialogueTable.scss'
 
@@ -13,7 +15,7 @@ const data = [
         Type: 'Observation',
         Description: 'Current screen media not hitting the required 20 weeks. Trialled XYZ company screen media, not hitting targets.',
         Action: 'Approached Schenck Process for screening media supply.',
-        Outcome: 'Successful',
+        Outcome: 'Unsuccessful',
         Status: 'open'
     },
     {
@@ -37,7 +39,7 @@ const data = [
         Type: 'Observation',
         Description: 'Current screen media not hitting the required 20 weeks. Trialled XYZ company screen media, not hitting targets.',
         Action: 'Approached Schenck Process for screening media supply.',
-        Outcome: 'Successful',
+        Outcome: 'Unsuccessful',
         Status: 'open'
     },
     {
@@ -67,6 +69,11 @@ const data = [
 ]
 
 export default function Dialogue() {
+    const [tableDataSource,setTableDataSource]=useState(data)
+    const [dropDownVisible, SetDropDownVisible] = useState(false)
+    const [checkedValues, setCheckedValues] = useState({})
+    const [filterData, setFilterData] = useState({})
+
     const columns = [
         {
             title: 'Date',
@@ -116,6 +123,23 @@ export default function Dialogue() {
         }
     ]
 
+    useEffect(() => {
+        let finalisedFilterData=[]
+        if (Object.keys(filterData).length) {
+            Object.keys(filterData).forEach((item)=>{
+                finalisedFilterData=data.filter((innerItem)=>filterData[item].includes(innerItem[item]))
+            })
+        }
+        else{
+            finalisedFilterData=data
+        }   
+        setTableDataSource(finalisedFilterData)
+    }, [filterData])
+
+    const onRemoveList = (category, list) => {
+        setCheckedValues({ ...checkedValues, [category]: checkedValues[category].filter((item) => item !== list) })
+    }
+
     return (
         <div className='dialogue-screen'>
             <div className='nav-button'>
@@ -127,7 +151,24 @@ export default function Dialogue() {
                     <label>Dialogue</label>
                 </div>
                 <div className='title-button'>
-                    <Button className='filter-button'><FilterOutlined />Filter</Button>
+                    <div className='filter-list'>
+                        {
+                            checkedValues
+                                ? Object.keys(checkedValues).map((item) => {
+                                    return checkedValues[item].map((list, inx) => {
+                                        return (
+                                            <div className='checked-list' key={inx}>
+                                                {list}
+                                                <CloseCircleOutlined onClick={() => onRemoveList(item, list)} />
+                                            </div>)
+                                    })
+                                })
+                                : null
+                        }
+                    </div>
+                    <Dropdown placement="bottomRight" visible={dropDownVisible} overlay={<FilterMenu checkedValues={checkedValues} setCheckedValues={setCheckedValues} setFilterData={setFilterData} SetDropDownVisible={SetDropDownVisible} />}>
+                        <Button className='filter-button' onClick={() => SetDropDownVisible(!dropDownVisible)}><FilterOutlined />Filter</Button>
+                    </Dropdown>
                     <Button className='dialogue-button'>Add Dialogue</Button>
                 </div>
             </div>
@@ -135,7 +176,7 @@ export default function Dialogue() {
                 <Table
                     rowkey={(val) => val.key}
                     columns={columns}
-                    dataSource={data}
+                    dataSource={tableDataSource}
                     pagination={false}
                     bordered={false}
                 />
